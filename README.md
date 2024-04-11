@@ -45,6 +45,11 @@ Total units:       6
 To download the code, click on "Code" button above and click "Download ZIP." Extract the folder and copy the contents of
 the src to your IDE.
 
-Alternatively in IntelliJ, you can import this file by going to `File` > `New` > `Project from Version Control...`.
-In the URL field, paste in `https://github.com/mosguinz/CSC215ExtraCredit_OOP`.
+Alternatively in IntelliJ, you can import this file by going to `File` > `New` > `Project from Version Control...`. Make
+sure the version control is set to Git. In the URL field, paste in `https://github.com/mosguinz/CSC215ExtraCredit_OOP`.
 
+![](import_from_git.png)
+
+## Submission
+
+To submit, simply email me with the subject "CSC 215 Extra Credit 1" and attach the source folder.
