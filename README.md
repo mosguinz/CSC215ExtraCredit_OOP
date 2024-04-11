@@ -1,9 +1,9 @@
 # CSC 215 — DS Extra Credit 1
 
 Inside the source folder is the `Student` class that we designed together in our discussion session, along with
-the `Course` and `Name` class.
+the `Course` and `Name` classes.
 
-`CSStudent` is a child of `Student`, containing one extra field, `favoriteLanguages`.
+`CSStudent` is a child of `Student`, containing one additional field, `favoriteLanguage`.
 
 **Estimated burden:** 5–15 minutes
 
@@ -11,7 +11,7 @@ the `Course` and `Name` class.
 
 The provided main method has an instance of `CSStudent` and `Student` created for you.
 
-Only update **two methods**. Nothing else.
+Only update **two methods** outlined below. Nothing else.
 
 ### First, update `getUnits()` in `Student` (2 points)
 
@@ -45,7 +45,7 @@ Total units:       6
 ## Setting up
 
 To download the code, click on "Code" button above and click "Download ZIP." Extract the folder and copy the contents of
-the src to your IDE.
+the src folder to your IDE.
 
 Alternatively in IntelliJ, you can import this file by going to `File` > `New` > `Project from Version Control...`. Make
 sure the version control is set to Git. In the URL field, paste in `https://github.com/mosguinz/CSC215ExtraCredit_OOP`.
