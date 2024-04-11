@@ -5,6 +5,8 @@ the `Course` and `Name` class.
 
 `CSStudent` is a child of `Student`, containing one extra field, `favoriteLanguages`.
 
+**Estimated burden:** 5–15 minutes
+
 ## Instructions
 
 The provided main method has an instance of `CSStudent` and `Student` created for you.
