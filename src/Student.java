@@ -26,7 +26,7 @@ public class Student {
      * TODO: Get the number of units this student is taking.
      */
     public int getUnits() {
-        return 0;
+        return 123;
     }
 
     public Name getName() {
