@@ -44,14 +44,46 @@ Total units:       6
 
 ## Setting up
 
+### Option 1: Download as ZIP folder
+
 To download the code, click on "Code" button above and click "Download ZIP." Extract the folder and copy the contents of
 the src folder to your IDE.
 
-Alternatively in IntelliJ, you can import this file by going to `File` > `New` > `Project from Version Control...`. Make
+### Option 2: Using Git
+
+Alternatively in IntelliJ, you can import this file by going to <kbd>File</kbd> > <kbd>New</kbd> > <kbd>Project from Version Control...</kbd>. Make
 sure the version control is set to Git. In the URL field, paste in `https://github.com/mosguinz/CSC215ExtraCredit_OOP`.
 
 ![](import_from_git.png)
 
+### Option 3: Forking and submitting a pull request
+
+> [!NOTE]
+> This requires a GitHub account.
+
+1. First, create a fork of this repository by using the `Fork` button above.
+2. In IntelliJ, clone the fork by going to <kbd>File</kbd> > <kbd>New</kbd> > <kbd>Project from Version Control...</kbd>.
+3. On the left-hand side, click on the GitHub tab and log in to your GitHub account.
+   ![](./import_from_fork.png)
+4. Return to IntelliJ, and select the name of the forked repository.
+
 ## Submission
 
+### Set up via Options 1 and 2
+
 To submit, simply email me with the subject "CSC 215 Extra Credit 1" and attach the source folder.
+
+### Set up via Option 3
+
+> [!IMPORTANT]
+> The following instructions assumes that you have already pushed your changes to the fork.
+
+1. Go to the forked repository.
+2. At the top of the page, click on `Contribute`, then `Open pull request`.
+   ![](./create_pr.png)
+3. Place your name in the title of the pull request and submit.
+
+For more information on how to create a pull request, click [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork).
+
+🎉 Congratulations on completing your first pull request!
+
