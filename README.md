@@ -46,7 +46,7 @@ Total units:       6
 
 ### Option 1: Download as ZIP folder
 
-To download the code, click on "Code" button above and click "Download ZIP." Extract the folder and copy the contents of
+To download the code, click on <kbd>Code</kbd> button above and click <kbd>Download ZIP</kbd>. Extract the folder and copy the contents of
 the src folder to your IDE.
 
 ### Option 2: Using Git
@@ -61,25 +61,25 @@ sure the version control is set to Git. In the URL field, paste in `https://gith
 > [!NOTE]
 > This requires a GitHub account.
 
-1. First, create a fork of this repository by using the `Fork` button above.
+1. First, create a fork of this repository by using the <kbd>Fork</kbd> button above.
 2. In IntelliJ, clone the fork by going to <kbd>File</kbd> > <kbd>New</kbd> > <kbd>Project from Version Control...</kbd>.
 3. On the left-hand side, click on the GitHub tab and log in to your GitHub account.
    ![](./import_from_fork.png)
-4. Return to IntelliJ, and select the name of the forked repository.
+4. Return to IntelliJ and select the forked repository.
 
 ## Submission
 
-### Set up via Options 1 and 2
+### If you set up via Options 1 and 2
 
 To submit, simply email me with the subject "CSC 215 Extra Credit 1" and attach the source folder.
 
-### Set up via Option 3
+### If you set up via Option 3
 
 > [!IMPORTANT]
 > The following instructions assumes that you have already pushed your changes to the fork.
 
 1. Go to the forked repository.
-2. At the top of the page, click on `Contribute`, then `Open pull request`.
+2. At the top of the page, click on <kbd>Contribute</kbd>, then <kbd>Open pull request</kbd>.
    ![](./create_pr.png)
 3. Place your name in the title of the pull request and submit.
 
