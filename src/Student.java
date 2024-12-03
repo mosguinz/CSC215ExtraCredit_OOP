@@ -26,7 +26,12 @@ public class Student {
      * TODO: Get the number of units this student is taking.
      */
     public int getUnits() {
-        return 0;
+        int sumUnits = 0;
+        for(int i = 0; i < coursesList.length; i++){
+            Course course = this.coursesList[i];
+            sumUnits = sumUnits + course.getUnits();
+        }
+        return sumUnits;
     }
 
     public Name getName() {
