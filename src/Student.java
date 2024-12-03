@@ -4,6 +4,7 @@ public class Student {
     int studentID;
     double gpa;
     Course[] coursesList;
+    int units;
 
     public Student(Name name, String major, int studentID, double gpa, Course[] coursesList) {
         this.name = name;
@@ -26,8 +27,11 @@ public class Student {
      * TODO: Get the number of units this student is taking.
      */
     public int getUnits() {
-        return 0;
-    }
+        Course[] course = getCoursesList();
+        for (Course totalUnits: course) {
+            units = units + totalUnits.getUnits();
+        }
+        return units; }
 
     public Name getName() {
         return name;
