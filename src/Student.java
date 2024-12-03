@@ -26,46 +26,54 @@ public class Student {
      * TODO: Get the number of units this student is taking.
      */
     public int getUnits() {
-        return 0;
-    }
+            if (coursesList != null) {
+                int totalUnits = 0;
+                for (Course course : coursesList) {
+                    totalUnits += course.getUnits();
 
-    public Name getName() {
-        return name;
-    }
+                }
+                return totalUnits;
+            }
+            return 0;
+        }
 
-    public void setName(Name name) {
-        this.name = name;
-    }
+        public Name getName () {
+            return name;
+        }
 
-    public String getMajor() {
-        return major;
-    }
+        public void setName (Name name){
+            this.name = name;
+        }
 
-    public void setMajor(String major) {
-        this.major = major;
-    }
+        public String getMajor () {
+            return major;
+        }
 
-    public int getStudentID() {
-        return studentID;
-    }
+        public void setMajor (String major){
+            this.major = major;
+        }
 
-    public void setStudentID(int studentID) {
-        this.studentID = studentID;
-    }
+        public int getStudentID () {
+            return studentID;
+        }
 
-    public double getGpa() {
-        return gpa;
-    }
+        public void setStudentID ( int studentID){
+            this.studentID = studentID;
+        }
 
-    public void setGpa(double gpa) {
-        this.gpa = gpa;
-    }
+        public double getGpa () {
+            return gpa;
+        }
 
-    public Course[] getCoursesList() {
-        return coursesList;
-    }
+        public void setGpa ( double gpa){
+            this.gpa = gpa;
+        }
 
-    public void setCoursesList(Course[] coursesList) {
-        this.coursesList = coursesList;
+        public Course[] getCoursesList () {
+            return coursesList;
+        }
+
+        public void setCoursesList (Course[]coursesList){
+            this.coursesList = coursesList;
+        }
     }
-}
