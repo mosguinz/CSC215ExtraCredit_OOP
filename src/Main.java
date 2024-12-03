@@ -35,7 +35,7 @@ public class Main {
 
         /* Add code here. */
         if (student instanceof CSStudent) {
-            System.out.printf("Favorite language: %s\n", ((CSStudent) student).favoriteLanguage);
+            System.out.printf("Favorite language: %s\n", ((CSStudent) student).getFavoriteLanguage());
         }
 
         for (Course c : courses) {
