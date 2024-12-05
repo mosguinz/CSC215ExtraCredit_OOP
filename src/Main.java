@@ -34,11 +34,10 @@ public class Main {
         System.out.printf("Name: %s %s\n", name.firstName, name.lastName);
 
         /* Add code here. */
-        //System.out.print("");
         if (student instanceof CSStudent) {
-            CSStudent csStudent = (CSStudent) student;
-            System.out.printf("Favorite Language: %s\n", csStudent.getFavoriteLanguage());
+            System.out.printf("Favorite language: %s\n", ((CSStudent) student).getFavoriteLanguage());
         }
+      
         for (Course c : courses) {
             System.out.printf("%-10s Units: %2d\n", c.getCourseCode(), c.getUnits());
         }
