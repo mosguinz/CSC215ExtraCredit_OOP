@@ -4,6 +4,7 @@ public class Student {
     int studentID;
     double gpa;
     Course[] coursesList;
+    int units;
 
     public Student(Name name, String major, int studentID, double gpa, Course[] coursesList) {
         this.name = name;
@@ -30,6 +31,7 @@ public class Student {
                 int totalUnits = 0;
                 for (Course course : coursesList) {
                     totalUnits += course.getUnits();
+
 
                 }
                 return totalUnits;
