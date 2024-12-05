@@ -34,9 +34,12 @@ public class Main {
         Course[] courses = student.getCoursesList();
         System.out.printf("Name: %s %s\n", name.firstName, name.lastName);
 
-        if (student instanceof CSStudent tempStudent) {
-            System.out.println("Favorite Language:\t\t" + tempStudent.getFavoriteLanguage());
+        /* Add code here. */
+        if (student instanceof CSStudent) {
+            CSStudent csStudent = (CSStudent) student; // casting to CSStudent
+            System.out.printf("Favorite Language: %s\n", csStudent.getFavoriteLanguage());
         }
+       // System.out.printf("Favorite Language: ", );
 
         for (Course c : courses) {
             System.out.printf("%-10s Units: %2d\n", c.getCourseCode(), c.getUnits());
