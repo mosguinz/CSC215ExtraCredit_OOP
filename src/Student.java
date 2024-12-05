@@ -4,6 +4,7 @@ public class Student {
     int studentID;
     double gpa;
     Course[] coursesList;
+    int units;
 
     public Student(Name name, String major, int studentID, double gpa, Course[] coursesList) {
         this.name = name;
@@ -36,44 +37,43 @@ public class Student {
         return totalUnits;
     }
 
+        public Name getName () {
+            return name;
+        }
 
-    public Name getName() {
-        return name;
-    }
+        public void setName (Name name){
+            this.name = name;
+        }
 
-    public void setName(Name name) {
-        this.name = name;
-    }
+        public String getMajor () {
+            return major;
+        }
 
-    public String getMajor() {
-        return major;
-    }
+        public void setMajor (String major){
+            this.major = major;
+        }
 
-    public void setMajor(String major) {
-        this.major = major;
-    }
+        public int getStudentID () {
+            return studentID;
+        }
 
-    public int getStudentID() {
-        return studentID;
-    }
+        public void setStudentID ( int studentID){
+            this.studentID = studentID;
+        }
 
-    public void setStudentID(int studentID) {
-        this.studentID = studentID;
-    }
+        public double getGpa () {
+            return gpa;
+        }
 
-    public double getGpa() {
-        return gpa;
-    }
+        public void setGpa ( double gpa){
+            this.gpa = gpa;
+        }
 
-    public void setGpa(double gpa) {
-        this.gpa = gpa;
-    }
+        public Course[] getCoursesList () {
+            return coursesList;
+        }
 
-    public Course[] getCoursesList() {
-        return coursesList;
+        public void setCoursesList (Course[]coursesList){
+            this.coursesList = coursesList;
+        }
     }
-
-    public void setCoursesList(Course[] coursesList) {
-        this.coursesList = coursesList;
-    }
-}
