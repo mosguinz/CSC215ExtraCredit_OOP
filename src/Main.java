@@ -34,17 +34,10 @@ public class Main {
         Course[] courses = student.getCoursesList();
         System.out.printf("Name: %s %s\n", name.firstName, name.lastName);
 
-        /* Add code here. */
         if (student instanceof CSStudent) {
             CSStudent csStudent = (CSStudent) student;
-            System.out.printf("Favorite language: %s\n", csStudent.getFavoriteLanguage());
+            System.out.printf("Favorite Language: %s\n", csStudent.getFavoriteLanguage());
         }
-        Course[] curses = student.getCoursesList();
-        if (courses != null) {
-            for (Course c : courses) {
-                System.out.printf("%-10s Units: %2d\n", c.getCourseCode(), c.getUnits());
-            }
-            System.out.printf("Total units:      %2d\n", student.getUnits());
 
         }
     }
