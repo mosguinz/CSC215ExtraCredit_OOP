@@ -4,6 +4,7 @@ public class Student {
     int studentID;
     double gpa;
     Course[] coursesList;
+    int units;
 
     public Student(Name name, String major, int studentID, double gpa, Course[] coursesList) {
         this.name = name;
