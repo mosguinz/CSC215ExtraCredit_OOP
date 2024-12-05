@@ -23,6 +23,7 @@ public class Main {
 
     }
 
+
     /**
      * 1 point for attempt. 3 points for correct implementation.
      * TODO: Modify this method so it displays their favorite language
@@ -39,6 +40,7 @@ public class Main {
             System.out.printf("Favorite Language: %s\n", csStudent.getFavoriteLanguage());
         }
        // System.out.printf("Favorite Language: ", );
+
         for (Course c : courses) {
             System.out.printf("%-10s Units: %2d\n", c.getCourseCode(), c.getUnits());
         }
