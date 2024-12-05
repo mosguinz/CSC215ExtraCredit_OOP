@@ -37,7 +37,6 @@ public class Main {
         if (student instanceof CSStudent tempstudent){
             System.out.println("Favorite Language:" + tempstudent.favoriteLanguage);
         }
-
         for (Course c : courses) {
             System.out.printf("%-10s Units: %2d\n", c.getCourseCode(), c.getUnits());
         }
