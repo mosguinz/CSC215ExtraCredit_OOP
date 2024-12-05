@@ -27,51 +27,55 @@ public class Student {
      * TODO: Get the number of units this student is taking.
      */
     public int getUnits() {
-        int sumUnits = 0;
-        for(int i = 0; i < coursesList.length; i++){
-            Course course = this.coursesList[i];
-            sumUnits = sumUnits + course.getUnits();
+            if (coursesList != null) {
+                int totalUnits = 0;
+                for (Course course : coursesList) {
+                    totalUnits += course.getUnits();
+
+
+                }
+                return totalUnits;
+            }
+            return 0;
         }
-        return sumUnits;
-    }
 
-    public Name getName() {
-        return name;
-    }
+        public Name getName () {
+            return name;
+        }
 
-    public void setName(Name name) {
-        this.name = name;
-    }
+        public void setName (Name name){
+            this.name = name;
+        }
 
-    public String getMajor() {
-        return major;
-    }
+        public String getMajor () {
+            return major;
+        }
 
-    public void setMajor(String major) {
-        this.major = major;
-    }
+        public void setMajor (String major){
+            this.major = major;
+        }
 
-    public int getStudentID() {
-        return studentID;
-    }
+        public int getStudentID () {
+            return studentID;
+        }
 
-    public void setStudentID(int studentID) {
-        this.studentID = studentID;
-    }
+        public void setStudentID ( int studentID){
+            this.studentID = studentID;
+        }
 
-    public double getGpa() {
-        return gpa;
-    }
+        public double getGpa () {
+            return gpa;
+        }
 
-    public void setGpa(double gpa) {
-        this.gpa = gpa;
-    }
+        public void setGpa ( double gpa){
+            this.gpa = gpa;
+        }
 
-    public Course[] getCoursesList() {
-        return coursesList;
-    }
+        public Course[] getCoursesList () {
+            return coursesList;
+        }
 
-    public void setCoursesList(Course[] coursesList) {
-        this.coursesList = coursesList;
+        public void setCoursesList (Course[]coursesList){
+            this.coursesList = coursesList;
+        }
     }
-}
