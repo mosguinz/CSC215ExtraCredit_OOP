@@ -23,6 +23,7 @@ public class Main {
 
     }
 
+
     /**
      * 1 point for attempt. 3 points for correct implementation.
      * TODO: Modify this method so it displays their favorite language
@@ -33,10 +34,10 @@ public class Main {
         Course[] courses = student.getCoursesList();
         System.out.printf("Name: %s %s\n", name.firstName, name.lastName);
 
-        /* Add code here. */
-        if (student instanceof CSStudent tempstudent){
-            System.out.println("Favorite Language:" + tempstudent.favoriteLanguage);
+        if (student instanceof CSStudent tempStudent) {
+            System.out.println("Favorite Language:\t\t" + tempStudent.getFavoriteLanguage());
         }
+
         for (Course c : courses) {
             System.out.printf("%-10s Units: %2d\n", c.getCourseCode(), c.getUnits());
         }

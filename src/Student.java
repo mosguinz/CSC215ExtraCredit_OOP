@@ -27,11 +27,11 @@ public class Student {
      * TODO: Get the number of units this student is taking.
      */
     public int getUnits() {
-       int units=0;
-        for (Course course: coursesList){
-            units=units+ course.getUnits();
+        int tempUnits= 0;
+        for (Course course : coursesList) {
+            tempUnits += course.getUnits();
         }
-        return units;
+        return tempUnits;
     }
 
     public Name getName() {
