@@ -26,8 +26,11 @@ public class Student {
      */
     public int getUnits() {
         int units = 0;
-        for (Course course : coursesList) {
-            units += course.getUnits();
+
+        if (this.coursesList != null) {
+            for (Course course : this.coursesList) {
+                units += course.getUnits();
+            }
         }
 
         return units;
