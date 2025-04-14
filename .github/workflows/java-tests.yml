@@ -5,6 +5,10 @@ on:
     paths:
       - 'src/**'
       - 'tests/**'
+      - '.github/workflows/java-tests.yml'
+  push:
+    branches:
+      - '**'
 
 jobs:
   student-units-test:
