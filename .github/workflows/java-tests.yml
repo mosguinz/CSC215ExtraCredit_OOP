@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - 'src/**'
-      - 'tests/**'
+      - 'test/**'
       - '.github/workflows/java-tests.yml'
   push:
     branches:
@@ -26,7 +26,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Compile StudentUnitsTest
-        run: javac -cp .:tests src/*.java tests/StudentUnitsTest.java
+        run: javac -cp .:tests src/*.java test/StudentUnitsTest.java
 
       - name: Run StudentUnitsTest
         run: java -cp .:tests:src org.junit.runner.JUnitCore StudentUnitsTest
@@ -47,7 +47,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Compile MainTest
-        run: javac -cp .:tests src/*.java tests/MainTest.java
+        run: javac -cp .:tests src/*.java test/MainTest.java
 
       - name: Run MainTest
         run: java -cp .:tests:src org.junit.runner.JUnitCore MainTest
