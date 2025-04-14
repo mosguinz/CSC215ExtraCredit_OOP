@@ -26,7 +26,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Run StudentUnitsTest
-        run: mvn -Dtest=StudentUnitsTest test
+        run: mvn -Dtest=StudentTest test
 
 
   print-student-test:
