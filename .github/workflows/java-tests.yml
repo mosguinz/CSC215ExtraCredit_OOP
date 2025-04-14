@@ -1,0 +1,49 @@
+name: Java Tests
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'tests/**'
+
+jobs:
+  student-units-test:
+    name: Test Student.getUnits()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Compile StudentUnitsTest
+        run: javac -cp .:tests src/*.java tests/StudentUnitsTest.java
+
+      - name: Run StudentUnitsTest
+        run: java -cp .:tests:src org.junit.runner.JUnitCore StudentUnitsTest
+
+
+  print-student-test:
+    name: Test Main.printStudent()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Compile MainTest
+        run: javac -cp .:tests src/*.java tests/MainTest.java
+
+      - name: Run MainTest
+        run: java -cp .:tests:src org.junit.runner.JUnitCore MainTest
