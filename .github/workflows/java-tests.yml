@@ -25,11 +25,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Compile StudentUnitsTest
-        run: javac -cp .:tests src/*.java test/StudentUnitsTest.java
-
       - name: Run StudentUnitsTest
-        run: java -cp .:tests:src org.junit.runner.JUnitCore StudentUnitsTest
+        run: mvn -Dtest=StudentUnitsTest test
 
 
   print-student-test:
@@ -46,8 +43,5 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Compile MainTest
-        run: javac -cp .:tests src/*.java test/MainTest.java
-
       - name: Run MainTest
-        run: java -cp .:tests:src org.junit.runner.JUnitCore MainTest
+        run: mvn -Dtest=MainTest test
