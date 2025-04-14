@@ -6,10 +6,6 @@ on:
       - 'src/**'
       - 'test/**'
       - '.github/workflows/java-tests.yml'
-  push:
-    branches:
-      - '**'
-
 jobs:
   student-units-test:
     name: Test Student.getUnits() test
