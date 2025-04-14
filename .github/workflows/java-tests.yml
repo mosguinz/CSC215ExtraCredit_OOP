@@ -8,7 +8,7 @@ on:
 
 jobs:
   student-units-test:
-    name: Test Student.getUnits()
+    name: Test Student.getUnits() test
     runs-on: ubuntu-latest
 
     steps:
