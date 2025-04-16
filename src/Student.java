@@ -26,7 +26,11 @@ public class Student {
      * TODO: Get the number of units this student is taking.
      */
     public int getUnits() {
-        return 0;
+        // make var track unit, loop course, increment, return unit
+        int total;
+
+        for (Course cours)
+        return total;
     }
 
     public Name getName() {
