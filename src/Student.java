@@ -27,6 +27,10 @@ public class Student {
      */
     public int getUnits() {
         return 0;
+        // make variable to track number of units
+        // loop thru the course list
+        // increment my variable of total units
+        // return total units
     }
 
     public Name getName() {

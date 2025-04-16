@@ -34,6 +34,10 @@ public class Main {
         System.out.printf("Name: %s %s\n", name.firstName, name.lastName);
 
         /* Add code here. */
+        // first, figure out of the student is a CSStudent instance
+        // if so, convert them into a CSStudent
+        // then, access their favorite programming language
+        // print out the language "favorite language: <lang>"
 
         for (Course c : courses) {
             System.out.printf("%-10s Units: %2d\n", c.getCourseCode(), c.getUnits());
