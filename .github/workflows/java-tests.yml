@@ -1,4 +1,4 @@
-name: Java Tests
+name: Auto-grader
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
       - '.github/workflows/java-tests.yml'
 jobs:
   student-units-test:
-    name: Test Student.getUnits() test
+    name: Test Student.getUnits()
     runs-on: ubuntu-latest
 
     steps:
