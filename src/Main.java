@@ -34,9 +34,6 @@ public class Main {
         System.out.printf("Name: %s %s\n", name.firstName, name.lastName);
 
         /* Add code here. */
-        if (student instanceof CSStudent) {
-            System.out.println("Favorite language:    " + ((CSStudent) student).getFavoriteLanguage());
-        }
 
         for (Course c : courses) {
             System.out.printf("%-10s Units: %2d\n", c.getCourseCode(), c.getUnits());
