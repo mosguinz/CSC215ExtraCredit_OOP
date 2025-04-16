@@ -27,11 +27,15 @@ public class Student {
      */
     public int getUnits() {
         // 1. set up a variable to keep track of the total
+        int total = 0;
         // 2. loop through the courses the student is taking
+        for (Course c : coursesList) {
+            total += c.getUnits();
+        }
         // 3. get the unit for each course
         // 4. inside the loop, increment our variable
         // 5. outside, we return the total
-        return 0;
+        return total;
     }
 
     public Name getName() {
