@@ -35,6 +35,10 @@ public class Main {
 
         /* Add code here. */
 
+        if (student instanceof CSStudent csStudent) {
+            System.out.println("Favorite Language: " + csStudent.getFavoriteLanguage());
+        }
+
         for (Course c : courses) {
             System.out.printf("%-10s Units: %2d\n", c.getCourseCode(), c.getUnits());
         }
