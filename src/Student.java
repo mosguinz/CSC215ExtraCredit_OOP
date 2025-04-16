@@ -31,7 +31,12 @@ public class Student {
         // 3. get unit for each course
         // 4. inside the loop, increment our variable
         // 5. outside, return the total
-        return 0;
+
+        int total = 0;
+        for (Course c : coursesList) {
+            total += c.getUnits();
+        }
+        return total;
     }
 
     public Name getName() {
