@@ -34,7 +34,7 @@ public class Main {
         System.out.printf("Name: %s %s\n", name.firstName, name.lastName);
 
         /* Add code here. */
-
+// If css need to convert them to csstudent, then access their fav language, then print it
         for (Course c : courses) {
             System.out.printf("%-10s Units: %2d\n", c.getCourseCode(), c.getUnits());
         }
