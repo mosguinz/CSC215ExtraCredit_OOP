@@ -26,7 +26,16 @@ public class Student {
      * TODO: Get the number of units this student is taking.
      */
     public int getUnits() {
-        return 0;
+        // 1. set up a variable to keep track of the total
+        int total = 0;
+        // 2. loop through the courses the student is taking
+        for (Course c : coursesList) {
+            total += c.getUnits();
+        }
+        // 3. get the unit for each course
+        // 4. inside the loop, increment our variable
+        // 5. outside, we return the total
+        return total;
     }
 
     public Name getName() {
