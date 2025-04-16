@@ -20,12 +20,18 @@ public class Student {
     public Student() {
 
     }
-
+/** set up variable to keep track of total
+ * make a loop through the courses the student is taking
+ * get the units from each course
+ * increment the loop
+ * return total outside of loop
+ */
     /**
      * 1 point for attempt. 2 points for correct implementation.
      * TODO: Get the number of units this student is taking.
      */
     public int getUnits() {
+
         return 0;
     }
 
@@ -54,14 +60,17 @@ public class Student {
     }
 
     public double getGpa() {
+
         return gpa;
     }
 
     public void setGpa(double gpa) {
+
         this.gpa = gpa;
     }
 
     public Course[] getCoursesList() {
+
         return coursesList;
     }
 
