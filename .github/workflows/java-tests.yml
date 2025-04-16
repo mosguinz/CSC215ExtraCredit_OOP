@@ -4,11 +4,11 @@ on:
   pull_request:
     paths:
       - 'src/**'
-      - 'tests/**'
-
+      - 'test/**'
+      - '.github/workflows/java-tests.yml'
 jobs:
   student-units-test:
-    name: Test Student.getUnits()
+    name: Test Student.getUnits() test
     runs-on: ubuntu-latest
 
     steps:
@@ -21,11 +21,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Compile StudentUnitsTest
-        run: javac -cp .:tests src/*.java tests/StudentUnitsTest.java
-
       - name: Run StudentUnitsTest
-        run: java -cp .:tests:src org.junit.runner.JUnitCore StudentUnitsTest
+        run: mvn -Dtest=StudentTest test
 
 
   print-student-test:
@@ -42,8 +39,5 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Compile MainTest
-        run: javac -cp .:tests src/*.java tests/MainTest.java
-
       - name: Run MainTest
-        run: java -cp .:tests:src org.junit.runner.JUnitCore MainTest
+        run: mvn -Dtest=MainTest test
