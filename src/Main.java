@@ -23,17 +23,14 @@ public class Main {
 
     }
 
-    /**
-     * 1 point for attempt. 3 points for correct implementation.
-     * TODO: Modify this method so it displays their favorite language
-     *       after the name if they are a `CSStudent`.
-     */
     public static void printStudent(Student student) {
         Name name = student.getName();
         Course[] courses = student.getCoursesList();
         System.out.printf("Name: %s %s\n", name.firstName, name.lastName);
 
-        /* Add code here. */
+        if (student instanceof CSStudent) {
+            System.out.println("Favorite Language: " + ((CSStudent)student).getFavoriteLanguage());
+        }
 
         for (Course c : courses) {
             System.out.printf("%-10s Units: %2d\n", c.getCourseCode(), c.getUnits());
