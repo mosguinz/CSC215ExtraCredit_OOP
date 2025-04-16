@@ -20,6 +20,7 @@ public class Main {
         printStudent(stu1);
         System.out.println("----------------------");
         printStudent(stu2);
+        k
 
     }
 
