@@ -1,7 +1,12 @@
 public class Main {
     public static void main(String[] args) {
         // Here's two students, one that is a `CSStudent` and another that is just a `Student`.
-
+/**
+ * figure out if this is a CS student instance
+ * convert to CS student type
+ * get favorite language and print it.
+ * tadaaaaaaaaaaa
+ */
         // Notice, "Alice" is of `CSStudent` type.
         CSStudent stu1 = new CSStudent(new Name("Alice", "Wonderland"), "Java");
         Course[] stu1_courses = new Course[3];
