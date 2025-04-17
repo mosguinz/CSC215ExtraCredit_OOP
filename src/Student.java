@@ -27,9 +27,11 @@ public class Student {
      */
     public int getUnits() {
         // make var track unit, loop course, increment, return unit
-        int total;
+        int total = 0;
 
-        for (Course cours)
+        for (Course course : coursesList) {
+            total += course.getUnits();
+        }
         return total;
     }
 
