@@ -23,10 +23,16 @@ public class Student {
 
     /**
      * 1 point for attempt. 2 points for correct implementation.
-     * TODO: Get the number of units this student is taking.
+     * TODO: Get the number of units this student is taking
      */
     public int getUnits() {
-        return 0;
+        // make var track unit, loop course, increment, return unit
+        int total = 0;
+
+        for (Course course : coursesList) {
+            total += course.getUnits();
+        }
+        return total;
     }
 
     public Name getName() {
