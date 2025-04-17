@@ -39,6 +39,10 @@ public class Main {
         // 2. if they are, convert them to CSStudent type
         // 3. get their favorite language
         // 4. print the favorite language
+        if (student instanceof CSStudent csStudent) {
+            System.out.printf("Favorite Language: %s\n", csStudent.getFavoriteLanguage());
+
+        }
 
         for (Course c : courses) {
             System.out.printf("%-10s Units: %2d\n", c.getCourseCode(), c.getUnits());
