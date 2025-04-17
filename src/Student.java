@@ -23,7 +23,7 @@ public class Student {
 
     /**
      * 1 point for attempt. 2 points for correct implementation.
-     * TODO: Get the number of units this student is taking.
+     * TODO: Get the number of units this student is taking
      */
     public int getUnits() {
         // make var track unit, loop course, increment, return unit

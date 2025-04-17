@@ -33,7 +33,7 @@ public class Main {
         Course[] courses = student.getCoursesList();
         System.out.printf("Name: %s %s\n", name.firstName, name.lastName);
 
-        /* Add code here. */
+        /* Add code here */
         if (student instanceof CSStudent) {
             System.out.println("Favorite Language: " + ((CSStudent)student).getFavoriteLanguage());
         }
