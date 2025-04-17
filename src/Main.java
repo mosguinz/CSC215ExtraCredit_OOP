@@ -33,7 +33,13 @@ public class Main {
         Course[] courses = student.getCoursesList();
         System.out.printf("Name: %s %s\n", name.firstName, name.lastName);
 
-        /* Add code here. */
+
+        if (student.getClass().getSimpleName().equals("CSStudent")) { // figure out if the student is a CSStudent instance
+            CSStudent CSStudent = (CSStudent) student; // convert them into a CSStudent
+            System.out.println("Favorite language: " + CSStudent.getFavoriteLanguage()); // print out the language
+        }
+
+
 
         for (Course c : courses) {
             System.out.printf("%-10s Units: %2d\n", c.getCourseCode(), c.getUnits());
