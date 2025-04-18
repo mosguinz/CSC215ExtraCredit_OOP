@@ -2,7 +2,7 @@ name: Merge attempt to branch
 
 on:
   workflow_run:
-    workflows: [ Autograder" ]
+    workflows: [ "Autograder" ]
     types:
       - completed
 
