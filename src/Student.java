@@ -25,8 +25,12 @@ public class Student {
      * 1 point for attempt. 2 points for correct implementation.
      * TODO: Get the number of units this student is taking.
      */
-    public int getUnits() {
-        return 0;
+    public int getUnits(){
+        int totalUnits = 0;
+        for (Course course : coursesList) {
+            totalUnits += course.getUnits();
+        }
+        return totalUnits;
     }
 
     public Name getName() {
