@@ -1,11 +1,11 @@
-name: Auto-grader
+name: Autograder
 
 on:
   pull_request:
     paths:
       - 'src/**'
       - 'test/**'
-      - '.github/workflows/java-tests.yml'
+      - 'autograder.yml'
 jobs:
   student-units-test:
     name: Test Student.getUnits()
