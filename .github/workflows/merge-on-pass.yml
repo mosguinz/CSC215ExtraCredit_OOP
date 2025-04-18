@@ -1,0 +1,46 @@
+name: Merge attempt to branch
+
+on:
+  workflow_run:
+    workflows: [ "Autograder" ]
+    types:
+      - completed
+
+env:
+  SEMESTER: 2025-fall
+
+jobs:
+  merge-if-successful:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install GitHub CLI and jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gh jq
+
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Get PR author
+        id: get-author
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_JSON=$(gh api "/repos/${{ github.repository }}/pulls?head=${{ github.repository_owner }}:${{ github.event.workflow_run.head_branch }}")
+          AUTHOR=$(echo "$PR_JSON" | jq -r '.[0].user.login')
+          echo "author=$AUTHOR" >> $GITHUB_OUTPUT
+
+      - name: Skip if PR is by excluded user
+        if: steps.get-author.outputs.author == 'mosguinz'
+        run: |
+          echo "Skipping: PR was opened by mosguinz"
+          exit 0
+
+      - name: Create and push semester branch
+        if: steps.get-author.outputs.author != 'mosguinz'
+        run: |
+          git fetch origin ${{ github.event.workflow_run.head_branch }}
+          git checkout -b $SEMESTER-${{ steps.get-author.outputs.author }} origin/${{ github.event.workflow_run.head_branch }}
+          git push origin $SEMESTER-${{ steps.get-author.outputs.author }}
