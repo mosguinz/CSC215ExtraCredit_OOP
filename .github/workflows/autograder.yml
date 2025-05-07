@@ -7,9 +7,6 @@ on:
       - 'test/**'
       - 'autograder.yml'
 
-env:
-  semester_prefix: "2025-fall"
-
 jobs:
   student-units-test:
     name: Test Student.getUnits()
@@ -46,12 +43,14 @@ jobs:
         run: mvn -Dtest=MainTest test
 
   merge-to-username-branch:
-    name: Merge PR into ${{ env.semester_prefix }}-<username> branch
+    name: Merge PR into student branch
     runs-on: ubuntu-latest
     needs: [student-units-test, print-student-test]
     permissions:
       contents: write
       pull-requests: write
+    env:
+      SEMESTER_PREFIX: "2025-fall"
 
     steps:
       - name: Checkout PR head
@@ -70,17 +69,19 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          BRANCH="${{ env.semester_prefix }}-${{ steps.prinfo.outputs.username }}"
+          BRANCH="${SEMESTER_PREFIX}-${{ steps.prinfo.outputs.username }}"
           git checkout -b "$BRANCH"
           git push origin "$BRANCH"
 
       - name: Merge PR into new branch
         uses: actions/github-script@v7
+        env:
+          SEMESTER_PREFIX: ${{ env.SEMESTER_PREFIX }}
         with:
           script: |
             const username = "${{ steps.prinfo.outputs.username }}";
             const headRef = "${{ steps.prinfo.outputs.head_ref }}";
-            const baseBranch = `${process.env.semester_prefix}-${username}`;
+            const baseBranch = `${process.env.SEMESTER_PREFIX}-${username}`;
 
             await github.rest.repos.merge({
               owner: context.repo.owner,
