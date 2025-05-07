@@ -1,29 +1,27 @@
 name: Merge PR into student branch
 
 on:
-  pull_request_target:
-    types: [opened, synchronize, reopened]
-    paths:
-      - 'src/**'
-      - 'test/**'
+  workflow_run:
+    workflows: ["Autograder"]
+    types:
+      - completed
 
 jobs:
   merge-to-username-branch:
     name: Merge PR into student's branch
     runs-on: ubuntu-latest
-
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     permissions:
       contents: write
       pull-requests: write
-
     env:
       SEMESTER_PREFIX: "2025-fall"
 
     steps:
-      - name: Checkout base repo (safe)
+      - name: Checkout base repo
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.base.ref }}
+          ref: ${{ github.event.workflow_run.head_sha }}
           token: ${{ secrets.REPO_PUSH_TOKEN }}
 
       - name: Get PR info
@@ -38,16 +36,16 @@ jobs:
           git config user.email "github-actions@github.com"
 
           BRANCH="${{ env.SEMESTER_PREFIX }}-${{ steps.prinfo.outputs.username }}"
-          git fetch origin ${{ steps.prinfo.outputs.head_ref }}
-          git checkout -b "$BRANCH" "origin/${{ steps.prinfo.outputs.head_ref }}"
-          git push origin "$BRANCH" --force
+          git fetch origin ${{ github.event.workflow_run.head_ref }}
+          git checkout -b "$BRANCH" "origin/${{ github.event.workflow_run.head_ref }}"
+          git push --force origin "$BRANCH"
 
       - name: Merge PR head into new branch
         uses: actions/github-script@v7
         with:
           script: |
             const username = "${{ steps.prinfo.outputs.username }}";
-            const headRef = "${{ steps.prinfo.outputs.head_ref }}";
+            const headRef = "${{ github.event.workflow_run.head_ref }}";
             const baseBranch = `${process.env.SEMESTER_PREFIX}-${username}`;
 
             await github.rest.repos.merge({
