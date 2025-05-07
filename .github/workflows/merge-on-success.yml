@@ -7,9 +7,6 @@ on:
       - 'src/**'
       - 'test/**'
 
-env:
-  SEMESTER_PREFIX: "2025-fall"
-
 jobs:
   merge-to-username-branch:
     name: Merge PR into branch "${{ env.SEMESTER_PREFIX }}-username"
@@ -18,6 +15,9 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+
+    env:
+      SEMESTER_PREFIX: "2025-fall"
 
     steps:
       - name: Checkout base repo (safe)
