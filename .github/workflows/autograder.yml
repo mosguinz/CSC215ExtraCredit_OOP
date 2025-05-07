@@ -6,6 +6,10 @@ on:
       - 'src/**'
       - 'test/**'
       - 'autograder.yml'
+
+env:
+  semester_prefix: "2025-fall"
+
 jobs:
   student-units-test:
     name: Test Student.getUnits()
@@ -24,7 +28,6 @@ jobs:
       - name: Run StudentUnitsTest
         run: mvn -Dtest=StudentTest test
 
-
   print-student-test:
     name: Test Main.printStudent()
     runs-on: ubuntu-latest
@@ -41,3 +44,48 @@ jobs:
 
       - name: Run MainTest
         run: mvn -Dtest=MainTest test
+
+  merge-to-username-branch:
+    name: Merge PR into ${{ env.semester_prefix }}-<username> branch
+    runs-on: ubuntu-latest
+    needs: [student-units-test, print-student-test]
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Get PR author and refs
+        id: prinfo
+        run: |
+          echo "username=${{ github.event.pull_request.user.login }}" >> $GITHUB_OUTPUT
+          echo "head_ref=${{ github.head_ref }}" >> $GITHUB_OUTPUT
+
+      - name: Create new branch and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          BRANCH="${{ env.semester_prefix }}-${{ steps.prinfo.outputs.username }}"
+          git checkout -b "$BRANCH"
+          git push origin "$BRANCH"
+
+      - name: Merge PR into new branch
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const username = "${{ steps.prinfo.outputs.username }}";
+            const headRef = "${{ steps.prinfo.outputs.head_ref }}";
+            const baseBranch = `${process.env.semester_prefix}-${username}`;
+
+            await github.rest.repos.merge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              base: baseBranch,
+              head: headRef,
+              commit_message: `Auto-merged PR #${context.payload.pull_request.number} into ${baseBranch}`
+            });
