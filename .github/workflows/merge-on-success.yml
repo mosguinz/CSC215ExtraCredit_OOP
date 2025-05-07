@@ -9,7 +9,7 @@ on:
 
 jobs:
   merge-to-username-branch:
-    name: Merge PR into branch "${{ env.SEMESTER_PREFIX }}-username"
+    name: Merge PR into student's branch
     runs-on: ubuntu-latest
 
     permissions:
