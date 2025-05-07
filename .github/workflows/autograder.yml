@@ -1,4 +1,4 @@
-name: Autograder
+name: Autograder and Merge PR
 
 on:
   pull_request:
@@ -53,31 +53,30 @@ jobs:
       SEMESTER_PREFIX: "2025-fall"
 
     steps:
-      - name: Checkout PR head
+      - name: Checkout base repo (safe)
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.event.pull_request.base.ref }}
           token: ${{ secrets.REPO_PUSH_TOKEN }}
 
-      - name: Get PR author and refs
+      - name: Get PR info
         id: prinfo
         run: |
           echo "username=${{ github.event.pull_request.user.login }}" >> $GITHUB_OUTPUT
-          echo "head_ref=${{ github.head_ref }}" >> $GITHUB_OUTPUT
+          echo "head_ref=${{ github.event.pull_request.head.ref }}" >> $GITHUB_OUTPUT
 
       - name: Create new branch and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions@github.com"
 
-          BRANCH="${SEMESTER_PREFIX}-${{ steps.prinfo.outputs.username }}"
-          git checkout -b "$BRANCH"
+          BRANCH="${{ env.SEMESTER_PREFIX }}-${{ steps.prinfo.outputs.username }}"
+          git fetch origin ${{ steps.prinfo.outputs.head_ref }}
+          git checkout -b "$BRANCH" "origin/${{ steps.prinfo.outputs.head_ref }}"
           git push origin "$BRANCH"
 
-      - name: Merge PR into new branch
+      - name: Merge PR head into new branch
         uses: actions/github-script@v7
-        env:
-          SEMESTER_PREFIX: ${{ env.SEMESTER_PREFIX }}
         with:
           script: |
             const username = "${{ steps.prinfo.outputs.username }}";
