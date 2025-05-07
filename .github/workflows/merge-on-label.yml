@@ -1,27 +1,32 @@
 name: Merge PR into student branch
 
 on:
-  workflow_run:
-    workflows: ["Autograder"]
-    types:
-      - completed
+  pull_request_target:
+    types: [labeled]
+    paths:
+      - 'src/**'
+      - 'test/**'
+
 
 jobs:
   merge-to-username-branch:
-    name: Merge PR into student's branch
+    name: Merge PR into branch student's branch
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
     permissions:
       contents: write
       pull-requests: write
+
     env:
       SEMESTER_PREFIX: "2025-fall"
 
+    if: github.event.label.name == 'graded' # only runs when labeled manually
+
     steps:
-      - name: Checkout base repo
+      - name: Checkout base repo (safe)
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ github.event.pull_request.base.ref }}
           token: ${{ secrets.REPO_PUSH_TOKEN }}
 
       - name: Get PR info
@@ -30,22 +35,22 @@ jobs:
           echo "username=${{ github.event.pull_request.user.login }}" >> $GITHUB_OUTPUT
           echo "head_ref=${{ github.event.pull_request.head.ref }}" >> $GITHUB_OUTPUT
 
-      - name: Create new branch and force push
+      - name: Create new branch and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions@github.com"
 
           BRANCH="${{ env.SEMESTER_PREFIX }}-${{ steps.prinfo.outputs.username }}"
-          git fetch origin ${{ github.event.workflow_run.head_ref }}
-          git checkout -b "$BRANCH" "origin/${{ github.event.workflow_run.head_ref }}"
-          git push --force origin "$BRANCH"
+          git fetch origin ${{ steps.prinfo.outputs.head_ref }}
+          git checkout -b "$BRANCH" "origin/${{ steps.prinfo.outputs.head_ref }}"
+          git push origin "$BRANCH"
 
       - name: Merge PR head into new branch
         uses: actions/github-script@v7
         with:
           script: |
             const username = "${{ steps.prinfo.outputs.username }}";
-            const headRef = "${{ github.event.workflow_run.head_ref }}";
+            const headRef = "${{ steps.prinfo.outputs.head_ref }}";
             const baseBranch = `${process.env.SEMESTER_PREFIX}-${username}`;
 
             await github.rest.repos.merge({
