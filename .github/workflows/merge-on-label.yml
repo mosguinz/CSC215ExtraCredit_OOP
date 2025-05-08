@@ -62,12 +62,13 @@ jobs:
               base: baseBranch
             });
 
-            // Close the PR after base branch update
-            await github.rest.pulls.update({
+            // Perform the merge
+            await github.rest.repos.merge({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              pull_number: prNumber,
-              state: 'closed'
+              base: baseBranch,
+              head: headRef,
+              commit_message: `Auto-merged PR #${prNumber} into ${baseBranch}`
             });
 
-            console.log(`PR #${prNumber} base changed to ${baseBranch} and closed.`);
+            console.log(`Merged PR #${prNumber} into ${baseBranch}`);
