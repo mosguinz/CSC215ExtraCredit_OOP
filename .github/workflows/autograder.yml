@@ -6,6 +6,7 @@ on:
       - 'src/**'
       - 'test/**'
       - 'autograder.yml'
+
 jobs:
   student-units-test:
     name: Test Student.getUnits()
@@ -23,7 +24,6 @@ jobs:
 
       - name: Run StudentUnitsTest
         run: mvn -Dtest=StudentTest test
-
 
   print-student-test:
     name: Test Main.printStudent()
