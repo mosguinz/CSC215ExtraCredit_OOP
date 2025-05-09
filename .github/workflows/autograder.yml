@@ -1,14 +1,15 @@
-name: Java Tests
+name: Autograder
 
 on:
   pull_request:
     paths:
       - 'src/**'
       - 'test/**'
-      - '.github/workflows/java-tests.yml'
+      - 'autograder.yml'
+
 jobs:
   student-units-test:
-    name: Test Student.getUnits() test
+    name: Test Student.getUnits()
     runs-on: ubuntu-latest
 
     steps:
@@ -23,7 +24,6 @@ jobs:
 
       - name: Run StudentUnitsTest
         run: mvn -Dtest=StudentTest test
-
 
   print-student-test:
     name: Test Main.printStudent()
